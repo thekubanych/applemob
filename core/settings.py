@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_yasg',
+    'corsheaders',
 
     'rest_framework',
 
@@ -26,14 +27,21 @@ INSTALLED_APPS = [
 ]
 
 # Middleware
+# MIDDLEWARE = [
+#     'django.middleware.security.SecurityMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.common.CommonMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# ]
+
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ...
 ]
 
 # URL конфигурация
@@ -111,3 +119,4 @@ DEFAULT_FROM_EMAIL = 'kubanychmuhtarov@gmail.com'
 #     "SENDGRID_API_KEY": "твой_sendgrid_api_key",
 # }
 # DEFAULT_FROM_EMAIL = "kubanychmuhtarov@gmail.com"
+STATIC_ROOT = BASE_DIR / "staticfiles"
