@@ -1,13 +1,16 @@
 from pathlib import Path
 import os
+from decouple import config
+
 
 # Пути проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Безопасность
 SECRET_KEY = 'django-insecure-+4_8yd)_@s!6)y^gk#e8z8@bedu^re%h3uu-_q8$(chyha(yum)'
-DEBUG = True
-ALLOWED_HOSTS = ['your-app.onrender.com', 'localhost', '127.0.0.1']
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = ['applemob.onrender.com', 'localhost', '127.0.0.1']
 
 # Статика
 STATIC_URL = '/static/'
@@ -31,10 +34,9 @@ INSTALLED_APPS = [
     'api',
     'users',
 ]
-
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # ДОЛЖЕН БЫТЬ ПОСЛЕ SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -42,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 # URL конфигурация
 ROOT_URLCONF = 'core.urls'
