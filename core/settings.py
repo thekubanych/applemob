@@ -101,3 +101,11 @@ DEFAULT_FROM_EMAIL = 'kubanychmuhtarov@gmail.com'
 # Безопасность cookies
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+
+# Для тестирования - разрешить все запросы
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
