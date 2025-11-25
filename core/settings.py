@@ -120,3 +120,5 @@ DEFAULT_FROM_EMAIL = 'kubanychmuhtarov@gmail.com'
 #     "SENDGRID_API_KEY": "твой_sendgrid_api_key",
 # }
 # DEFAULT_FROM_EMAIL = "kubanychmuhtarov@gmail.com"
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
