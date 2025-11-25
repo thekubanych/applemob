@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Пути проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -6,7 +7,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Безопасность
 SECRET_KEY = 'django-insecure-+4_8yd)_@s!6)y^gk#e8z8@bedu^re%h3uu-_q8$(chyha(yum)'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['your-app.onrender.com', 'localhost', '127.0.0.1']
+
+# Статика
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Приложения
 INSTALLED_APPS = [
@@ -83,7 +89,6 @@ USE_I18N = True
 USE_TZ = True
 
 # Статика
-STATIC_URL = 'static/'
 
 # Кастомная модель пользователя
 AUTH_USER_MODEL = 'users.User'
@@ -112,4 +117,3 @@ DEFAULT_FROM_EMAIL = 'kubanychmuhtarov@gmail.com'
 #     "SENDGRID_API_KEY": "твой_sendgrid_api_key",
 # }
 # DEFAULT_FROM_EMAIL = "kubanychmuhtarov@gmail.com"
-STATIC_ROOT = BASE_DIR / "staticfiles"
