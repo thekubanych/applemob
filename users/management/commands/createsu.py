@@ -8,10 +8,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
 
-        # Используем email для проверки и создания
+        # Используем phone_number так как он обязателен в вашей модели
         if not User.objects.filter(email='kubanychmuhtarov@gmail.com').exists():
             User.objects.create_superuser(
                 email='kubanychmuhtarov@gmail.com',
+                phone_number='+996555123456',  # Добавляем обязательное поле
                 password='1234'
             )
             self.stdout.write(
