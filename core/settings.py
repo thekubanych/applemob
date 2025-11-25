@@ -122,3 +122,19 @@ DEFAULT_FROM_EMAIL = 'kubanychmuhtarov@gmail.com'
 # DEFAULT_FROM_EMAIL = "kubanychmuhtarov@gmail.com"
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+# Авто-создание суперпользователя
+import os
+
+if not os.environ.get('SUPERUSER_CREATED'):
+    from django.contrib.auth import get_user_model
+
+    User = get_user_model()
+
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser(
+            username='admin',
+            email='kubanychmuhtarov@gmail.com',
+            password='1234'  # Поменяйте пароль!
+        )
+        os.environ['SUPERUSER_CREATED'] = '1'
