@@ -8,10 +8,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
 
-        # Используем phone_number если это основное поле
-        if not User.objects.filter(phone_number='+996221093030').exists():
+        # Используем email для проверки и создания
+        if not User.objects.filter(email='kubanychmuhtarov@gmail.com').exists():
             User.objects.create_superuser(
-                phone_number='+996221093030',  # или другое поле
                 email='kubanychmuhtarov@gmail.com',
                 password='1234'
             )
